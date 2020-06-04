@@ -1,4 +1,3 @@
-
 #include "cuda_runtime.h"
 #include "device_launch_parameters.h"
 #include "cuda.h"
@@ -45,7 +44,6 @@ __global__ void mulKernel(float *c, const float *a, const float *b, int n)
 	int col = blockIdx.x*blockDim.x + threadIdx.x;
 	float result = 0.0f;
 	if (row < n && col < n) {
-		// each thread computes one element of the block sub-matrix
 		for (int i = 0; i < n; i++) {
 			result += a[row * n + i] * b[i * n + col];
 		}
